@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request action="add" key="{{ affiliate_key }}" zone="{{ zone_id }}">
+    <data>{{ torrent_data }}</data>
+    <name>{{ content_name }}</name>
+    <duration>{{ duration }}</duration>
+</request>
