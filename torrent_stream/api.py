@@ -15,7 +15,7 @@ class TorrentStreamAPI(object):
     def __init__(self, affiliate_key, zone_id, xml_api_url=None):
         """
         @param string affiliate_key -
-        @param integer zone_id - 
+        @param integer zone_id -
         @see http://acestream.net/affiliate/index.php
         """
         self.affiliate_key = affiliate_key
@@ -26,7 +26,7 @@ class TorrentStreamAPI(object):
         """Send XML request
         @param string template_name - Path to xml-template
         @param dict params - Context for xml-template
-        @return string - Response in XML 
+        @return string - Response in XML
         """
         xml_template = open(os.path.join(os.path.dirname(__file__), template_name)).read()
         xml_content = Template(xml_template).render(Context(params))
@@ -44,13 +44,15 @@ class TorrentStreamAPI(object):
         self.duration = duration
 
         if not self._content_id:
+            # Request for getting Content ID
             xml_result = self.send_request("templates/request.xml", params=vars(self))
             tree = etree.HTML(xml_result)
-            status = tree.xpath('//response/status')[0]
-            if status.text == 'accepted':
-                self._content_id = tree.xpath('//response/id/text()')[0]
-            else:
-                error = "TorrentStream Error: {0} (Errcode: {1})".format(status.attrib.get('error'), status.attrib.get('errorcode'))
-                raise exceptions.FailedResponse(error)
+            statuses = tree.xpath('//response/status')
+            if statuses:
+                status = statuses[0]
+                if status.text == 'accepted':
+                    self._content_id = tree.xpath('//response/id/text()')[0]
+                else:
+                    error = "TorrentStream Error: {0} (Errcode: {1})".format(status.attrib.get('error'), status.attrib.get('errorcode'))
+                    raise exceptions.FailedResponse(error)
         return self._content_id
-            
