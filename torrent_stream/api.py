@@ -45,7 +45,10 @@ class TorrentStreamAPI(object):
 
         if not self._content_id:
             # Request for getting Content ID
-            xml_result = self.send_request("templates/request.xml", params=vars(self))
+            try:
+                xml_result = self.send_request("templates/request.xml", params=vars(self))
+            except (Exception, ), e:
+                raise exceptions.ServerFault(e.message)
             tree = etree.HTML(xml_result)
             statuses = tree.xpath('//response/status')
             if statuses:
