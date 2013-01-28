@@ -1,0 +1,8 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-10 18:21+0400\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Watch online"
+msgstr "Смотреть онлайн"

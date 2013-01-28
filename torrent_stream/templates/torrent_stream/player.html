@@ -1,0 +1,8 @@
+{% if content_id %}
+<script type="text/javascript">
+document.write(unescape("%3Cscript src=\"http://torrentstream.net/p/{{ content_id }}\" type=\"text/javascript\"%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    tsplayer(null, {width: "{{ TORRENT_STREAM_PLAYER.width }}", height: "{{ TORRENT_STREAM_PLAYER.height }}"});
+</script>
+{% endif %}

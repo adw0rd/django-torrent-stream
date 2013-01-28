@@ -1,0 +1,54 @@
+{% load i18n static %}
+
+{% if content_id %}
+    {% trans "Watch online" as watch_online_translated %}
+    <a href="#" id="torrent_stream_button_{{ content_id }}">
+        <img src="{% static "torrent_stream/play_icon_small.png" %}"
+             alt="{{ watch_online_translated }}" title="{{ watch_online_translated }}"
+             style="float:left" />
+        <span style="padding-left:2px">{{ watch_online_translated }}</span>
+    </a>
+    <div style="clear:both"></div>
+    <script type="text/javascript">
+    var torrent_stream_video_box_id = "torrent_stream_video_box";
+    if (!document.getElementById(torrent_stream_video_box_id)) {
+        // Once create a video-box for output online video
+        var el = document.createElement('div');
+        el.id = torrent_stream_video_box_id;
+        var browser_size = get_browser_size();
+        var box_width = parseInt('{{ TORRENT_STREAM_PLAYER.width }}');
+        var box_height = parseInt('{{ TORRENT_STREAM_PLAYER.height }}');
+        var box_top = (browser_size['h'] / 2) - (box_height / 2);
+        var box_left = (browser_size['w'] / 2) - (box_width / 2);
+        console.log(browser_size, 'position:fixed;top:'+box_top+'px;left:'+box_left+'px;width:'+box_width+'px;height:'+box_height+'px')
+        el.style.cssText = 'position:fixed;top:'+box_top+'px;left:'+box_left+'px;width:'+box_width+'px;height:'+box_height+'px';
+        document.body.appendChild(el);
+    }
+    document.getElementById("torrent_stream_button_{{ content_id }}").onclick = function(){
+        // Click to "Watch online" and setup video-player to video-box
+        var script = document.createElement('script');
+        script.src = "http://torrentstream.net/p/{{ content_id }}";
+        document.documentElement.appendChild(script);
+        script.onload = function() {
+            tsplayer(
+                torrent_stream_video_box_id,
+                {width: "{{ TORRENT_STREAM_PLAYER.width }}", height: "{{ TORRENT_STREAM_PLAYER.height }}"}
+            );
+        };
+        return false;
+    };
+    function get_browser_size () {
+        var browserWidth, browserHeight;
+        if (typeof(window.innerWidth) == 'number') {
+            // Non-IE
+            browserWidth = window.innerWidth;
+            browserHeight = window.innerHeight;
+        } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+            // IE 6+ in 'standards compliant mode'
+            browserWidth = document.documentElement.clientWidth;
+            browserHeight = document.documentElement.clientHeight;
+        }
+        return {'w': parseInt(browserWidth), 'h': parseInt(browserHeight)}
+    }
+    </script>
+{% endif %}
