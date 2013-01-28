@@ -1,0 +1,4 @@
+recursive-include torrent_stream/static *
+recursive-include torrent_stream/templates *
+recursive-include torrent_stream/templatetags *
+recursive-include torrent_stream/locale *
