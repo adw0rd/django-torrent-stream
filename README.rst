@@ -19,8 +19,7 @@ Add to ``settings.py``::
 
     INSTALLED_APPS = (
         ...
-        'torrent_stream',
-        ...
+        'torrent_stream'
     )
     
     TORRENT_STREAM_AFFILIATE_KEY = "<HASH>"
