@@ -6,7 +6,7 @@ Wraps the Torrent Stream http://torrentstream.org/
 Installation
 -------------
 
-Install a stable version::
+Install a `stable version <http://pypi.python.org/pypi/django-torrent-stream>`_::
 
     pip install django-torrent-stream
 
@@ -17,6 +17,11 @@ Or install an alpha version::
 
 Add to ``settings.py``::
 
+    INSTALLED_APPS = (
+        ...
+        'torrent_stream'
+    )
+    
     TORRENT_STREAM_AFFILIATE_KEY = "<HASH>"
     TORRENT_STREAM_ZONE_ID = <DIGIT>
     
