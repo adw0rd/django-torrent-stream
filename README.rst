@@ -40,10 +40,12 @@ For example, you have a model Torrent::
 
 You can display the button, when clicked, will be available to the player::
 
+    {% load torrent_stream %}
     {% torrent_stream_button torrent.filename %}
 
 Or you can display a player at once::
 
+    {% load torrent_stream %}
     {% torrent_stream_player torrent.filename %}
 
 How to get CONTENT_ID
