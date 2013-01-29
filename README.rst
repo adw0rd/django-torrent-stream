@@ -17,6 +17,12 @@ Or install an alpha version::
 
 Add to ``settings.py``::
 
+    INSTALLED_APPS = (
+        ...
+        'torrent_stream',
+        ...
+    )
+    
     TORRENT_STREAM_AFFILIATE_KEY = "<HASH>"
     TORRENT_STREAM_ZONE_ID = <DIGIT>
     
