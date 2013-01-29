@@ -63,3 +63,9 @@ if (!document.getElementById(torrent_stream['video_box_id'])) {
 }
 document.getElementById("torrent_stream_button_" + torrent_stream_config['content_id']).onclick =
     torrent_stream['attach_video_player_to_video_box'];
+
+document.onkeypress = function(e) {
+    if (e.keyCode == 27) {  // ESC
+        torrent_stream['dettach_video_player_from_video_box']();
+    }
+}
