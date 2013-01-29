@@ -6,7 +6,7 @@ Wraps the Torrent Stream http://torrentstream.org/
 Installation
 -------------
 
-Install a stable version::
+Install a `stable version <http://pypi.python.org/pypi/django-torrent-stream>`_::
 
     pip install django-torrent-stream
 
