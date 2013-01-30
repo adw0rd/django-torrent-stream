@@ -48,6 +48,15 @@ You can display the button, when clicked, will be available to the player::
     {% load torrent_stream %}
     {% torrent_stream_button torrent.filename %}
 
+Result:
+
+----
+
+.. image:: https://raw.github.com/adw0rd/django-torrent-stream/master/screenshots/button_player_.png
+    :target: http://kinsburg.tv/en/films/5430-puteshestvie-na-lunu/
+
+----
+
 Or you can display a player at once::
 
     {% load torrent_stream %}
