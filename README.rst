@@ -53,7 +53,7 @@ Result:
 ----
 
 .. image:: https://raw.github.com/adw0rd/django-torrent-stream/master/screenshots/button_player_.png
-    :target: http://kinsburg.tv/films/5430-puteshestvie-na-lunu/
+    :target: http://kinsburg.tv/en/films/5430-puteshestvie-na-lunu/
 
 ----
 
