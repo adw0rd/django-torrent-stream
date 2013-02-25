@@ -14,7 +14,8 @@
             'content_id': '{{ content_id }}',
             'box_width': parseInt('{{ TORRENT_STREAM_PLAYER.width }}'),
             'box_height': parseInt('{{ TORRENT_STREAM_PLAYER.height }}'),
-            'ajax_loader': '{% static "torrent_stream/ajax-loader.gif" %}'
+            'ajax_loader': '{% static "torrent_stream/ajax-loader.gif" %}',
+            'close_player_confirm': '{% trans "Are you sure you want to close the player?" %}'
         }
     </script>
     <script type="text/javascript" src="{% static "torrent_stream/button.js" %}"></script>

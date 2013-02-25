@@ -32,7 +32,7 @@ var torrent_stream = {
     },
     'attach_video_player_to_video_box': function () {
         // Click to "Watch online" and setup video-player to video-box
-        var video_box = document.getElementById(torrent_stream['video_box_id'])
+        var video_box = document.getElementById(torrent_stream['video_box_id']);
         video_box.style.display = 'block';
         video_box.innerHTML = '<img src="' + torrent_stream_config['ajax_loader'] + '" alt="Loading..." />';
 
@@ -67,5 +67,15 @@ document.getElementById("torrent_stream_button_" + torrent_stream_config['conten
 document.onkeypress = function(e) {
     if (e.keyCode == 27) {  // ESC
         torrent_stream['dettach_video_player_from_video_box']();
+    }
+}
+document.getElementById('torrent_stream_video_box').onclick = function() {
+    window.CLICK_TO_TS_PLAYER = true;
+}
+document.onclick = function() {
+    if (document.getElementsByClassName('ts-power').length && !window.CLICK_TO_TS_PLAYER) {
+        if (confirm(torrent_stream_config['close_player_confirm'])) {
+            torrent_stream['dettach_video_player_from_video_box']();
+        }
     }
 }

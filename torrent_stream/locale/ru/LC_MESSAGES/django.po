@@ -6,3 +6,6 @@ msgstr ""
 
 msgid "Watch online"
 msgstr "Смотреть онлайн"
+
+msgid "Are you sure you want to close the player?"
+msgstr "Вы уверены что хотите закрыть плеер?"
