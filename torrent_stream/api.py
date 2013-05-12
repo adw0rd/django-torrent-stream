@@ -58,4 +58,4 @@ class TorrentStreamAPI(object):
                 else:
                     error = "TorrentStream Error: {0} (Errcode: {1})".format(status.attrib.get('error'), status.attrib.get('errorcode'))
                     raise exceptions.FailedResponse(error)
-        return self._content_id
+        return str(self._content_id)

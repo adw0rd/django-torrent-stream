@@ -1,8 +1,7 @@
 {% load i18n static %}
-
-{% if content_id %}
+{% with 'torrent_stream_button_'|add:torrent_content_hash as transport_id %}
     {% trans "Watch online" as watch_online_translated %}
-    <a href="#" id="torrent_stream_button_{{ content_id }}">
+    <a href="#" id="{{ transport_id }}">
         <img src="{% static "torrent_stream/play_icon_small.png" %}"
              alt="{{ watch_online_translated }}" title="{{ watch_online_translated }}"
              style="float:left" />
@@ -11,7 +10,8 @@
     <div style="clear:both"></div>
     <script type="text/javascript">
         var torrent_stream_config = {
-            'content_id': '{{ content_id }}',
+            'transport_id': '{{ transport_id }}',
+            'torrent_stream_js': '{% url torrent_stream_js torrent_content_hash %}',
             'box_width': parseInt('{{ TORRENT_STREAM_PLAYER.width }}'),
             'box_height': parseInt('{{ TORRENT_STREAM_PLAYER.height }}'),
             'ajax_loader': '{% static "torrent_stream/ajax-loader.gif" %}',
@@ -19,4 +19,4 @@
         }
     </script>
     <script type="text/javascript" src="{% static "torrent_stream/button.js" %}"></script>
-{% endif %}
+{% endwith %}

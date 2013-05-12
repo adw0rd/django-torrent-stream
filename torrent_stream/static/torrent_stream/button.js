@@ -37,7 +37,9 @@ var torrent_stream = {
         video_box.innerHTML = '<img src="' + torrent_stream_config['ajax_loader'] + '" alt="Loading..." />';
 
         var script = document.createElement('script');
-        script.src = "http://torrentstream.net/p/" + torrent_stream_config['content_id'];
+        script.type = "text/javascript";
+        script.src = torrent_stream_config['torrent_stream_js'];
+        script.async = true;
         document.documentElement.appendChild(script);
         script.onload = function() {
             tsplayer(
@@ -61,17 +63,20 @@ if (!document.getElementById(torrent_stream['video_box_id'])) {
     // Once create a video-box
     torrent_stream['create_video_box']();
 }
-document.getElementById("torrent_stream_button_" + torrent_stream_config['content_id']).onclick =
+
+document.getElementById(torrent_stream_config['transport_id']).onclick =
     torrent_stream['attach_video_player_to_video_box'];
 
-document.onkeypress = function(e) {
+document.addEventListener('keypress', function(e) {
     if (e.keyCode == 27) {  // ESC
         torrent_stream['dettach_video_player_from_video_box']();
     }
-}
+});
+
 document.getElementById('torrent_stream_video_box').onclick = function() {
     window.CLICK_TO_TS_PLAYER = true;
 }
+
 document.onclick = function() {
     if (document.getElementsByClassName('ts-power').length && !window.CLICK_TO_TS_PLAYER) {
         if (confirm(torrent_stream_config['close_player_confirm'])) {

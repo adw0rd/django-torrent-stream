@@ -33,6 +33,15 @@ Add to ``settings.py``::
 
 These ``KEY`` and ``ID`` you can get on a page http://acestream.net/affiliate/
 
+Add to ``urls.py``::
+
+    urlpatterns += patterns(
+        ...
+        url(r'^ts/', include('torrent_stream.urls'))
+    )
+
+For inclusion the ``torrent_stream.views``. Remember, you can change the prefix ``r'ts/'`` on anything.
+
 Usage
 ---------
 

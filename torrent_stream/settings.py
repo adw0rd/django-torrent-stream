@@ -1,9 +1,16 @@
 from django.conf import settings
 
+TORRENT_STREAM_ZONE_ID = settings.TORRENT_STREAM_ZONE_ID
+TORRENT_STREAM_AFFILIATE_KEY = settings.TORRENT_STREAM_AFFILIATE_KEY
+
 TORRENT_STREAM_PLAYER = {
     'width': '650px',
     'height': '342px',
 }
+TORRENT_STREAM_CACHE_PREFIX = 'torrent_stream_'
 
 if hasattr(settings, 'TORRENT_STREAM_PLAYER'):
     TORRENT_STREAM_PLAYER.update(settings.TORRENT_STREAM_PLAYER)
+
+if hasattr(settings, 'TORRENT_STREAM_CACHE_PREFIX'):
+    TORRENT_STREAM_CACHE_PREFIX = settings.TORRENT_STREAM_CACHE_PREFIX
