@@ -1,21 +1,23 @@
-{% with 'torrent_stream_transport_'|add:torrent_content_hash as transport_id %}
-    <div id="{{ transport_id }}"></div>
-    <script type="text/javascript">
-        (function() {
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = "{% url torrent_stream_js torrent_content_hash %}";
-            script.async = true;
-            var transport = document.getElementById('{{ transport_id }}');
-            transport.appendChild(script);
-            var player = document.createElement("div");
-            player.style.cssText = 'width:{{ TORRENT_STREAM_PLAYER.width }};'+
-                'height:{{ TORRENT_STREAM_PLAYER.height }};' +
-                'overflow:hidden';
-            transport.appendChild(player);
-            script.addEventListener('load', function () {
-                tsplayer(player, {width: "{{ TORRENT_STREAM_PLAYER.width }}", height: "{{ TORRENT_STREAM_PLAYER.height }}"});
-            });
-        })();
-    </script>
-{% endwith %}
+{% if torrent_content_hash %}
+    {% with 'torrent_stream_transport_'|add:torrent_content_hash as transport_id %}
+        <div id="{{ transport_id }}"></div>
+        <script type="text/javascript">
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "{% url torrent_stream_js torrent_content_hash %}";
+                script.async = true;
+                var transport = document.getElementById('{{ transport_id }}');
+                transport.appendChild(script);
+                var player = document.createElement("div");
+                player.style.cssText = 'width:{{ TORRENT_STREAM_PLAYER.width }};'+
+                    'height:{{ TORRENT_STREAM_PLAYER.height }};' +
+                    'overflow:hidden';
+                transport.appendChild(player);
+                script.addEventListener('load', function () {
+                    tsplayer(player, {width: "{{ TORRENT_STREAM_PLAYER.width }}", height: "{{ TORRENT_STREAM_PLAYER.height }}"});
+                });
+            })();
+        </script>
+    {% endwith %}
+{% endif %}
