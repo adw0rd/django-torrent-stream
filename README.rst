@@ -3,6 +3,9 @@ django-torrent-stream
 
 Wraps the Torrent Stream http://torrentstream.org/
 
+.. image:: https://pypip.in/d/django-torrent-stream/badge.png
+        :target: http://pypi.python.org/pypi/django-torrent-stream
+
 Installation
 -------------
 
