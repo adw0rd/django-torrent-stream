@@ -58,7 +58,7 @@ For example, you have a model Torrent::
 You can display the button, when clicked, will be available to the player::
 
     {% load torrent_stream %}
-    {% torrent_stream_button torrent.filename %}
+    {% torrent_stream_button torrent.content %}
 
 Result:
 
@@ -72,7 +72,7 @@ Result:
 Or you can display a player at once::
 
     {% load torrent_stream %}
-    {% torrent_stream_player torrent.filename %}
+    {% torrent_stream_player torrent.content %}
 
 How to get CONTENT_ID
 ------------------------
